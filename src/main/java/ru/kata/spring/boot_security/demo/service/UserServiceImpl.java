@@ -62,6 +62,8 @@ public class UserServiceImpl implements UserService {
     public void updateUser(int id, User updateUser) {
         if (updateUser.getPassword().equals("")) {
             updateUser.setPassword(getUserById(id).getPassword());
+        } if (updateUser.getRolesSet()==null){
+            updateUser.setRolesSet(getUserById(id).getRolesSet());
         } else {
             updateUser.setPassword(encoder.encode(updateUser.getPassword()));
         }
